@@ -15,6 +15,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
 
+    if request.path != post_path(@post)
+      redirect_to @post, status: :moved_permanently
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
