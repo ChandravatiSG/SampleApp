@@ -1,0 +1,20 @@
+<% if User.first.provider == 'facebook' %>
+  <%= User.first.provider %>
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+    <div class="field">
+      <%= f.label :commenter %><br />
+      <%= f.text_field :commenter %>
+    </div>
+    <div class="field">
+      <%= f.label :body %><br />
+      <%= f.text_area :body %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% else %>
+  <p> You need to Sign In through Facebook to Comment on this Post. </p>
+  <h2><%= link_to 'Yes', root_url %></h2>
+  <br/>
+<% end %>

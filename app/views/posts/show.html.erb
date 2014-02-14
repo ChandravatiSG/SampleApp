@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @post.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @post.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @post.content %>
+</p>
+
+<h2>Tags</h2>
+<%= render @post.tags %>
+
+<h2>Add a tag:</h2>
+<%= render "tags/form" %>
+
+<h2>Comments</h2>
+<%= render @post.comments %>
+  
+<h2>Add a comment:</h2>
+<%#= link_to 'New Comment', new_post_comment_path(@post) %>
+<%= render "comments/form" %>
+
+<%= link_to 'Edit Post', edit_post_path(@post) %> |
+<%= link_to 'Back to Posts', posts_path %> |
