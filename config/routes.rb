@@ -2,6 +2,10 @@ Blog::Application.routes.draw do
 
   root :to => 'home#index'
   
+  resources :posts do
+    resources :post_comments
+    resources :tags
+  end  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -10,10 +14,6 @@ Blog::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout'
   get "home/index"
 
-  resources :posts do
-    resources :comments
-    resources :tags
-  end
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   

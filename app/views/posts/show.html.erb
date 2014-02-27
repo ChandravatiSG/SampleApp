@@ -1,31 +1,72 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
 
-<p>
-  <b>Name:</b>
-  <%= @post.name %>
-</p>
+  <div class="col-lg-8">
+    
+      <h1><a href="#"><%= @post.title%></a></h1>
+      <p class="lead">by <a href="index.php"><%= @post.name%></a>
+      </p>
+      <hr>
 
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
+      <p>
+          <span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+      <hr>
 
-<p>
-  <b>Content:</b>
-  <%= @post.content %>
-</p>
+      <p>
+        <%= @post.content%>
+      </p>
 
-<h2>Tags</h2>
-<%= render @post.tags %>
+    <hr>
+    <!-- the comment box -->
+    <div class="well">
+        <h4>Leave a Comment:</h4>
+        <br>
+        <!-- <form role="form"> -->
+          <%= render "post_comments/form" %>
+       <!--  </form> -->
+    </div>
+
+    <hr>
+    <!-- the comments -->
+    <%# unless @post.comments.blank? %>
+      <% @comments = @post.post_comments %>
+      <% @comments.each do |comment| %>
+        <h3><%= @post.title %>
+          <small>9:41 PM on August 24, 2013</small>
+        </h3>
+        <h5>Commented By, <p><%= comment.commenter %></p></h5>
+        <p><%= comment.body %></p>
+      <% end %>
+    <%# end %>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="well">
+      <h4>Blog Search</h4>
+      <div class="input-group">
+          <input type="text" class="form-control">
+          <span class="input-group-btn">
+              <button class="btn btn-default" type="button">
+                  <span class="glyphicon glyphicon-search"></span>
+              </button>
+          </span>
+      </div>
+        <!-- /input-group -->
+    </div>
+  </div>
+</div>
+
+<!-- <h2>Tags</h2>
+<%#= render @post.tags %>
 
 <h2>Add a tag:</h2>
-<%= render "tags/form" %>
+<%#= render "tags/form" %>
 
 <h2>Comments</h2>
-<%= render @post.comments %>
+<%#= render @post.comments %>
   
 <h2>Add a comment:</h2>
-<%= render "comments/form" %>
+<%#= render "comments/form" %>
 
-<%= link_to 'Edit Post', edit_post_path(@post) %> |
-<%= link_to 'Back to Posts', posts_path %> |
+<%#= link_to 'Edit Post', edit_post_path(@post) %> |
+<%#= link_to 'Back to Posts', posts_path %> | -->

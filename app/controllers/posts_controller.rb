@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-
+    @comment = @post.post_comments.new
     if request.path != post_path(@post)
       redirect_to @post, status: :moved_permanently
     end
