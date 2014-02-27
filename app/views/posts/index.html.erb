@@ -1,34 +1,39 @@
 <div class="row">
+  <div class="col-lg-8">
+    <% @posts.each do |post| %>
+      <h1>
+        <%= link_to truncate(post.title, :length => 50, :omission => "..."), post_path(post.id), :title => "Show the details for '#{post.title}' Post" %>
+      </h1>
+      <p class="lead">by 
+        <a href="index.php"><%= post.name%></a>
+      </p>
+      <hr>
+      <p>
+        <span class="glyphicon glyphicon-time"></span> 
+        Posted on August 28, 2013 at 10:00 PM
+      </p>
+      <hr>
+      <p>
+        <%= post.content%>
+      </p>
+      <a class="btn btn-primary" href="#">
+        Read More
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    <% end%>
+  </div><!-- col-lg-8 -->
 
-        <div class="col-lg-8">
-          <% @posts.each do |post| %>
-            <h1><a href="#"><%= post.title%></a></h1>
-            <p class="lead">by <a href="index.php"><%= post.name%></a>
-            </p>
-            <hr>
-
-            <p>
-                <span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-            <hr>
-
-            <p>
-              <%= post.content%>
-            </p>
-            <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-          <% end%>
-        <div>
-         <div class="col-lg-4">
-            <div class="well">
-                <h4>Blog Search</h4>
-                <div class="input-group">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                </div>
-                <!-- /input-group -->
-            </div>
-          </div>
-      </div>
+  <div class="col-lg-4">
+    <div class="well">
+      <h4>Blog Search</h4>
+      <div class="input-group">
+        <input type="text" class="form-control">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div><!-- input-group -->
+    </div><!-- well -->
+  </div><!-- col-lg-4 -->
+</div><!-- row -->
